@@ -1,0 +1,133 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("MMB HUB | Murderers VS Sheriffs Duels", "DarkTheme")
+
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Hit Box")
+
+
+_G.HeadSize = 50
+Section:NewSlider("Hit Box Size", "", 100, 10, function(s) -- 500 (MaxValue) | 0 (MinValue)
+_G.HeadSize = s
+end)
+
+Section:NewToggle("Hit Box Color Black", "Hit Box Black Color", function(va)
+_G.Disabled = va
+end)
+
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabled then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.3
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+
+Section:NewToggle("Hit Box Color Red", "Hit Box Red Color", function(va)
+_G.Disabledq = va
+end)
+
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabledq then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really red")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+
+Section:NewToggle("Hit Box Color Blue", "Hit Box Blue Color", function(va)
+_G.Disabledw = va
+end)
+
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabledw then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+
+
+Section:NewToggle("Hit Box Color Gray", "Hit Box Gray Color", function(va)
+_G.Disabledz = va
+end)
+
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabledz then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.7
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really gray")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+
+Section:NewToggle("Hit Box Color pink", "Hit Box pink Color", function(va)
+_G.Disabledc = va
+end)
+
+game:GetService('RunService').RenderStepped:connect(function()
+if _G.Disabledc then
+for i,v in next, game:GetService('Players'):GetPlayers() do
+if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+pcall(function()
+v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+v.Character.HumanoidRootPart.Transparency = 0.1
+v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really pink")
+v.Character.HumanoidRootPart.Material = "Neon"
+v.Character.HumanoidRootPart.CanCollide = false
+end)
+end
+end
+end
+end)
+
+
+Section:NewSlider("Speed", "Boost Speed", 150, 1, function(s) -- 500 (MaxValue) | 0 (MinValue)
+getgenv().speed = s
+end)
+
+Section:NewToggle("Speed", "Speed", function(va)
+getgenv().d = va
+end)
+
+spawn(function()
+while wait() do
+if getgenv().d then
+pcall(function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().speed
+end)
+end
+end
+end)
+
